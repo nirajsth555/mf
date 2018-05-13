@@ -7,6 +7,8 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+use App\contactustable;
+
 class contact_us_mail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -16,11 +18,12 @@ class contact_us_mail extends Mailable
      *
      * @return void
      */
-    public $variable;
-    public function __construct(All $all)
+    public $contact_details;
+
+    public function __construct(contactustable $contact_details)
     {
         //
-        $this->all= $all;
+        $this->contact_details = $contact_details;
         
     }
 
@@ -31,6 +34,7 @@ class contact_us_mail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.seemail',compact('all'));
+        // return $this->view('mail.seemail',compact('all'));
+        return $this->view('mail.seemail');
     }
 }

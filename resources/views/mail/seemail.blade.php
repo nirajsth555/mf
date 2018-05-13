@@ -4,8 +4,8 @@
 	<title></title>
 </head>
 <body>
-	<h2>From:</h2> {{$all->client_name}}
+	<h2>From:</h2> {{$contact_details->client_name}}
 <p>Message:</p>
-
+{{$contact_details->message}}
 </body>
 </html>

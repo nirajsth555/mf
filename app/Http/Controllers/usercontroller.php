@@ -126,7 +126,7 @@ class usercontroller extends Controller
          $obj->message= $request->get('message');
          $result= $obj->save();
          // return $request;
-         //$this->getEmail($result);
+         $this->getEmail($obj);
          if($result){
            return response()->json(['message'=>'Thank You for your message']);
         
@@ -156,18 +156,18 @@ class usercontroller extends Controller
     //     }
     // }
 
-    // public function getEmail($result){
+    public function getEmail($result){
+        //$from= 'sachoin@gmail.com';
+        //$msg= 'hello man ';
+        //mail::to("imniraj555@gmail.com")->send(new contact_us_mail());
+        //return 'successful';
+        $from= $result->email_address;
+        $message = $result->message;
+        // mail::to("imniraj555@gmail.com")->send(new contact_us_mail($from,$message));
+        mail::to("swopnildangol@gmail.com")->send(new contact_us_mail($result));
+        return $result;
 
-    //     //$from= 'sachoin@gmail.com';
-    //     //$msg= 'hello man ';
-    //     //mail::to("imniraj555@gmail.com")->send(new contact_us_mail());
-    //     //return 'successful';
-    //     $from= $result->email_address;
-    //     $message= $result->message;
-    //     mail::to("imniraj555@gmail.com")->send(new contact_us_mail($from,$message));
-    //     return $result;
-
-    // }
+    }
 
 
 }
